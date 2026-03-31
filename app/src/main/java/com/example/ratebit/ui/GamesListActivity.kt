@@ -1,6 +1,6 @@
 package com.example.ratebit.ui
 
-import GamesAdapter
+import com.example.ratebit.ui.adapter.GamesAdapter
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
