@@ -81,7 +81,7 @@
             android:layout_gravity="top|end"
             android:layout_margin="8dp"
             android:src="@android:drawable/btn_star_big_on"
-            android:tint="#FFFFFF"/>
+            app:tint="#FFFFFF"/>
 
     </FrameLayout>
 
