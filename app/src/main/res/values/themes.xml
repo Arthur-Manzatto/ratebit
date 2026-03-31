@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.Ratebit" parent="Base.Theme.Ratebit" />
+    <style name="Theme.Ratebit.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Ratebit.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Ratebit.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
