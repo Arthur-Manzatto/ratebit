@@ -1,6 +1,5 @@
 package com.example.ratebit.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -12,17 +11,11 @@ import com.example.ratebit.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
-class LoginActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
-
-        val email = findViewById<TextInputEditText>(R.id.input_email)
-        val password = findViewById<TextInputEditText>(R.id.input_password)
-        val btnLogin = findViewById<MaterialButton>(R.id.btn_login)
-        val btnSignUp = findViewById<TextView>(R.id.btn_signup)
-        val txtErrorMessage = findViewById<TextView>(R.id.txt_error_message)
+        setContentView(R.layout.activity_signup)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -30,23 +23,26 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        btnLogin.setOnClickListener {
-            val emailText = email.text.toString()
-            val passwordText = password.text.toString()
+        val inputPassword = findViewById<TextInputEditText>(R.id.input_password)
+        val inputConfirmPassword = findViewById<TextInputEditText>(R.id.input_confirm_password)
+        val btnSignUp = findViewById<MaterialButton>(R.id.btn_signup)
+        val txtSignIn = findViewById<TextView>(R.id.txt_signin)
+        val txtErrorMessage = findViewById<TextView>(R.id.txt_error_message)
 
-            // Simulação de login
-            if (emailText == "admin" && passwordText == "admin") {
+        btnSignUp.setOnClickListener {
+            val password = inputPassword.text.toString()
+            val confirmPassword = inputConfirmPassword.text.toString()
+
+            if (password == confirmPassword) {
                 txtErrorMessage.visibility = View.GONE
-                val intent = Intent(this, GamesListActivity::class.java)
-                startActivity(intent)
+                // Lógica de sucesso aqui
             } else {
                 txtErrorMessage.visibility = View.VISIBLE
             }
         }
 
-        btnSignUp.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
+        txtSignIn.setOnClickListener {
+            finish()
         }
     }
 }

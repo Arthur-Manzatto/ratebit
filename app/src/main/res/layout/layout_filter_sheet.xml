@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#1A1A1A"
+    android:padding="24dp">
+
+    <View
+        android:id="@+id/viewHandle"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#333333"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtFilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Filter by"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewHandle" />
+
+    <!-- GENRE -->
+    <TextView
+        android:id="@+id/labelGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Genre"
+        android:textColor="#CCCCCC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtFilterTitle" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/labelGenre"
+        app:singleSelection="true">
+        <!-- Chips will be added programmatically -->
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- RATING -->
+    <TextView
+        android:id="@+id/labelRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Minimum Rating"
+        android:textColor="#CCCCCC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroupGenre" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0.0"
+        android:valueTo="10.0"
+        android:stepSize="1.0"
+        app:layout_constraintTop_toBottomOf="@id/labelRating"
+        app:thumbColor="@color/primary_yellow"
+        app:trackColorActive="@color/primary_yellow" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnApplyFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="APPLY FILTERS"
+        android:backgroundTint="@color/primary_yellow"
+        android:textColor="#000000"
+        app:cornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@id/sliderRating" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

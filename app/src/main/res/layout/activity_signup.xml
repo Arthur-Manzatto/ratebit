@@ -8,6 +8,20 @@
     android:background="@color/bg_black"
     android:padding="32dp">
 
+    <!-- MESMA POSICAO DA TELA DE LOGIN -->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="367dp"
+        android:layout_height="157dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/logo_ratebit" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_email_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -18,9 +32,9 @@
         android:hint="Email"
         android:textColorHint="@color/text_secondary"
         app:boxStrokeColor="@color/primary_yellow"
-        app:hintTextColor="@color/primary_yellow"
-        app:boxStrokeWidthFocused="2dp"
         app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,17 +55,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:hint="Password"
         android:textColorHint="@color/text_secondary"
-        app:boxStrokeWidthFocused="2dp"
-        app:boxStrokeWidth="2dp"
         app:boxStrokeColor="@color/primary_yellow"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/primary_yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_email_layout"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/text_secondary">
 
@@ -63,22 +77,49 @@
             android:textColor="@color/text_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_confirm_password_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/text_secondary"
+        app:boxStrokeColor="@color/primary_yellow"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_password_layout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/text_secondary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/text_white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/primary_yellow"
-        android:text="SIGN IN"
+        android:text="SIGN UP"
         android:textColor="@color/bg_black"
         android:textStyle="bold"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintTop_toBottomOf="@id/input_confirm_password_layout" />
 
     <!-- TEXTO DE ERRO EM VERMELHO -->
     <TextView
@@ -86,38 +127,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Invalid email or password"
+        android:text="Passwords do not match"
         android:textColor="#FF0000"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@id/btn_signup" />
 
+    <!-- MESMA POSICAO DA TELA DE LOGIN -->
     <TextView
-        android:id="@+id/btn_signup"
+        android:id="@+id/txt_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New here? Create account"
+        android:text="Already have an account? Login"
         android:textColor="@color/text_secondary"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.867" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="367dp"
-        android:layout_height="157dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/logo_ratebit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
