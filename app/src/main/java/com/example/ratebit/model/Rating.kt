@@ -1,8 +1,8 @@
 package com.example.ratebit.model
 
 data class Rating(
-    val fkGameId: Int,
+    val fkIdJogo: Int,
     val fkEmailUser: String,
-    val rating: Double,
-    val comment: String
+    val nota: Double,
+    val comentario: String
 )
