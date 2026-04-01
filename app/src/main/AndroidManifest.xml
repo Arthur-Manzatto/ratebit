@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratebit" >
         <activity
+            android:name=".ui.AddGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SignupActivity"
             android:exported="false" />
         <activity

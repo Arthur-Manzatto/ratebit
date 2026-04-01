@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.ratebit" />
+                  <option name="mobileSdkAppId" value="1:505794350529:android:f7161ffbf4be526ceb7340" />
+                  <option name="projectId" value="ratebit-ab73dc29" />
+                  <option name="projectNumber" value="505794350529" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

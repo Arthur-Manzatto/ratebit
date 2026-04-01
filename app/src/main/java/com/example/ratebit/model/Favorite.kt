@@ -1,6 +1,6 @@
 package com.example.ratebit.model
 
 class Favorite {
-    var fkEmailUser: String = ""
-    var fkIdJogo: Int = 0
+    var userEmail: String = ""
+    var gameId: Int = 0
 }

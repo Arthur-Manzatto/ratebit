@@ -35,7 +35,7 @@ class SignupActivity : AppCompatActivity() {
 
             if (password == confirmPassword) {
                 txtErrorMessage.visibility = View.GONE
-                // Lógica de sucesso aqui
+                // Success logic here
             } else {
                 txtErrorMessage.visibility = View.VISIBLE
             }
