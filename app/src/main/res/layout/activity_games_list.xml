@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_black">
+    android:background="@color/bg_black"
+    android:fitsSystemWindows="true">
 
     <!-- TOOLBAR (TITLE + FILTER + SEARCH) -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +19,7 @@
             android:id="@+id/btnFilter"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:contentDescription="Filter"
+            android:contentDescription="@string/filter"
             android:padding="4dp"
             android:src="@drawable/ic_filter"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +31,7 @@
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Games List"
+            android:text="@string/games_list"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            android:hint="Search game..."
+            android:hint="@string/search_game"
             android:imeOptions="actionSearch"
             android:importantForAutofill="no"
             android:inputType="text"
@@ -61,7 +62,7 @@
             android:id="@+id/btnSearch"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:contentDescription="Search"
+            android:contentDescription="@string/search"
             android:padding="4dp"
             android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="parent"

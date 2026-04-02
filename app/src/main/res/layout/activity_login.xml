@@ -5,7 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_black"
-    android:padding="32dp">
+    android:padding="32dp"
+    android:fitsSystemWindows="true">
+
+    <!-- TEXTO DE ERRO EM VERMELHO (MOVIDO PARA CIMA) -->
+    <TextView
+        android:id="@+id/txt_error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/invalid_login"
+        android:textColor="#FF0000"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/input_email_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_email_layout"
@@ -32,7 +46,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:textColor="@color/text_white"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:imeOptions="actionNext" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +76,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/text_white"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -80,19 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.672" />
-
-    <!-- TEXTO DE ERRO EM VERMELHO -->
-    <TextView
-        android:id="@+id/txt_error_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/invalid_login"
-        android:textColor="#FF0000"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login" />
 
     <TextView
         android:id="@+id/btn_signup"

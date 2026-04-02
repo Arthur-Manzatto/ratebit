@@ -12,6 +12,8 @@
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
     <string name="invalid_login">Invalid email or password</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="email_already_in_use">Email already in use</string>
     <string name="passwords_dont_match">Passwords do not match</string>
     <string name="new_here_create_account">New here? Create account</string>
     <string name="already_have_account_sign_in">Already have an account? Sign in</string>
@@ -35,4 +37,13 @@
     <string name="minimum_rating">Minimum Rating</string>
     <string name="apply_filters">APPLY FILTERS</string>
     <string name="none">None</string>
+    <string name="username">Username</string>
+    <string name="favorite_games">Favorite Games</string>
+    <string name="logout">Logout</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="profile_updated">Profile updated!</string>
+    <string name="account_deleted">Account deleted.</string>
+    <string name="pfp_url">Profile Picture URL</string>
 </resources>

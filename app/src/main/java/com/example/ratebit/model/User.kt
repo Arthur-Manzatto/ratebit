@@ -4,5 +4,6 @@ data class User(
     var email: String = "",
     var password: String = "",
     var name: String = "",
-    var type: String = ""
+    var type: String = "",
+    var urlPfp: String = ""
 )

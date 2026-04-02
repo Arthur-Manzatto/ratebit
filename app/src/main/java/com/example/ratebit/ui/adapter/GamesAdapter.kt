@@ -10,8 +10,11 @@ import com.bumptech.glide.Glide
 import com.example.ratebit.R
 import com.example.ratebit.model.Game
 
-class GamesAdapter(private var originalList: List<Game>) :
-    RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
+class GamesAdapter(
+    private var originalList: List<Game>,
+    private var favoriteIds: List<Int> = listOf(),
+    private val onFavoriteClick: (Game, Boolean) -> Unit
+) : RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
 
     private var filteredList = originalList.toList()
 
@@ -20,6 +23,7 @@ class GamesAdapter(private var originalList: List<Game>) :
         val genre: TextView = itemView.findViewById(R.id.txtGenre)
         val rating: TextView = itemView.findViewById(R.id.txtRating)
         val cover: ImageView = itemView.findViewById(R.id.imgGame)
+        val btnFavorite: ImageView = itemView.findViewById(R.id.btnFavorite)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
@@ -34,12 +38,26 @@ class GamesAdapter(private var originalList: List<Game>) :
         holder.genre.text = game.category
         holder.rating.text = game.averageRating.toString()
 
-        // CARREGA A IMAGEM USANDO GLIDE
+        // Check if game is favorite
+        val isFavorite = favoriteIds.contains(game.id)
+        if (isFavorite) {
+            holder.btnFavorite.setImageResource(android.R.drawable.btn_star_big_on)
+            holder.btnFavorite.setColorFilter(android.graphics.Color.YELLOW)
+        } else {
+            holder.btnFavorite.setImageResource(android.R.drawable.btn_star_big_off)
+            holder.btnFavorite.setColorFilter(android.graphics.Color.WHITE)
+        }
+
+        holder.btnFavorite.setOnClickListener {
+            onFavoriteClick(game, !isFavorite)
+        }
+
+        // Load image with Glide
         if (game.coverUrl.isNotEmpty()) {
             Glide.with(holder.itemView.context)
                 .load(game.coverUrl)
                 .centerCrop()
-                .placeholder(R.drawable.ic_launcher_background) // Imagem enquanto carrega
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.cover)
         } else {
             holder.cover.setImageResource(R.drawable.ic_launcher_background)
@@ -48,9 +66,15 @@ class GamesAdapter(private var originalList: List<Game>) :
 
     override fun getItemCount(): Int = filteredList.size
 
-    fun updateData(newList: List<Game>) {
+    fun updateData(newList: List<Game>, newFavoriteIds: List<Int> = favoriteIds) {
         originalList = newList
+        favoriteIds = newFavoriteIds
         filteredList = newList.toList()
+        notifyDataSetChanged()
+    }
+
+    fun updateFavorites(newFavoriteIds: List<Int>) {
+        favoriteIds = newFavoriteIds
         notifyDataSetChanged()
     }
 
