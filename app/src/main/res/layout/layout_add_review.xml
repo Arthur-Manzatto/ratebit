@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_black"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate this Game"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Your Rating (1 - 5 Stars)"
+        android:textColor="@color/text_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+    <LinearLayout
+        android:id="@+id/layoutStars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelScore">
+
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/star4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/star5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutComment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Write your review..."
+        android:textColorHint="@color/text_secondary"
+        app:boxStrokeColor="@color/primary_yellow"
+        app:hintTextColor="@color/primary_yellow"
+        app:layout_constraintTop_toBottomOf="@id/layoutStars">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:textColor="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmitReview"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/primary_yellow"
+        android:text="SUBMIT REVIEW"
+        android:textColor="@color/bg_black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/layoutComment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
