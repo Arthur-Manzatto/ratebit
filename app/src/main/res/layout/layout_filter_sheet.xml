@@ -27,6 +27,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewHandle" />
 
+    <TextView
+        android:id="@+id/btnClearFilters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:textColor="@color/primary_yellow"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/txtFilterTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtFilterTitle" />
+
     <!-- GENRE -->
     <TextView
         android:id="@+id/labelGenre"
@@ -59,16 +70,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chipGroupGenre" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderRating"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/layoutStarsFilter"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:valueFrom="0.0"
-        android:valueTo="10.0"
-        android:stepSize="1.0"
-        app:layout_constraintTop_toBottomOf="@id/labelRating"
-        app:thumbColor="@color/primary_yellow"
-        app:trackColorActive="@color/primary_yellow" />
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelRating">
+
+        <ImageView
+            android:id="@+id/filterStar1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/filterStar2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/filterStar3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/filterStar4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/filterStar5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="4dp"
+            android:src="@android:drawable/btn_star_big_off"
+            app:tint="@color/white" />
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnApplyFilter"
@@ -79,6 +130,6 @@
         android:backgroundTint="@color/primary_yellow"
         android:textColor="#000000"
         app:cornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/sliderRating" />
+        app:layout_constraintTop_toBottomOf="@id/layoutStarsFilter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

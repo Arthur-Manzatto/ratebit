@@ -26,4 +26,17 @@ class GameRepository {
             }
         }
     }
+
+    fun getGameById(id: Int, onResult: (Game?) -> Unit, onError: (Exception) -> Unit) {
+        gamesCollection.whereEqualTo("id", id).limit(1).get()
+            .addOnSuccessListener { snapshots ->
+                if (!snapshots.isEmpty) {
+                    val game = snapshots.documents[0].toObject(Game::class.java)
+                    onResult(game)
+                } else {
+                    onResult(null)
+                }
+            }
+            .addOnFailureListener { onError(it) }
+    }
 }

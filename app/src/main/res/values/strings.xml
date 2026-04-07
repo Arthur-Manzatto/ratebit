@@ -46,4 +46,8 @@
     <string name="profile_updated">Profile updated!</string>
     <string name="account_deleted">Account deleted.</string>
     <string name="pfp_url">Profile Picture URL</string>
+    <string name="game_page">Game Page</string>
+    <string name="review_it">REVIEW IT</string>
+    <string name="reviews">Reviews</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.ratebit.ui
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -25,13 +27,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.google.android.material.slider.Slider
 import com.google.firebase.firestore.ListenerRegistration
 
 class GamesListActivity : AppCompatActivity() {
 
     private var selectedGenre: String = "None"
-    private var selectedMinRating: Float = 0.0f
+    private var selectedMinRating: Int = 0
     private var gamesList: MutableList<Game> = mutableListOf()
     private var favoriteIds: MutableList<Int> = mutableListOf()
     
@@ -56,16 +57,23 @@ class GamesListActivity : AppCompatActivity() {
         val btnFilter = findViewById<ImageView>(R.id.btnFilter)
         val editSearch = findViewById<EditText>(R.id.editSearch)
         val txtTitle = findViewById<TextView>(R.id.txtTitle)
+        val btnAdd = findViewById<ImageView>(R.id.btnAdd)
+
+        btnAdd.visibility = View.GONE
+        checkAdminStatus(btnAdd)
 
         adapter = GamesAdapter(
             originalList = gamesList,
             favoriteIds = favoriteIds,
             onFavoriteClick = { game, isFavorite ->
                 userEmail?.let { email ->
-                    userRepository.toggleFavorite(email, game.id, isFavorite) {
-                        // Real-time listener will update local list
-                    }
+                    userRepository.toggleFavorite(email, game.id, isFavorite) { }
                 }
+            },
+            onGameClick = { game ->
+                val intent = Intent(this, GamePageActivity::class.java)
+                intent.putExtra("GAME_ID", game.id)
+                startActivity(intent)
             }
         )
         
@@ -75,7 +83,6 @@ class GamesListActivity : AppCompatActivity() {
         observeUserFavorites()
         observeGames()
 
-        val btnAdd = findViewById<ImageView>(R.id.btnAdd)
         btnAdd.setOnClickListener {
             val intent = Intent(this, AddGameActivity::class.java)
             startActivity(intent)
@@ -124,6 +131,19 @@ class GamesListActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkAdminStatus(btnAdd: ImageView) {
+        userEmail?.let { email ->
+            userRepository.getUser(email,
+                onSuccess = { user ->
+                    if (user?.type == "admin") {
+                        btnAdd.visibility = View.VISIBLE
+                    }
+                },
+                onFailure = { }
+            )
+        }
+    }
+
     private fun observeUserFavorites() {
         userEmail?.let { email ->
             favoritesListener = userRepository.observeFavoriteIds(email) { ids ->
@@ -158,8 +178,9 @@ class GamesListActivity : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.layout_filter_sheet, findViewById(android.R.id.content), false)
 
         val chipGroup = view.findViewById<ChipGroup>(R.id.chipGroupGenre)
-        val slider = view.findViewById<Slider>(R.id.sliderRating)
+        val layoutStars = view.findViewById<LinearLayout>(R.id.layoutStarsFilter)
         val btnApply = view.findViewById<MaterialButton>(R.id.btnApplyFilter)
+        val btnClear = view.findViewById<TextView>(R.id.btnClearFilters)
 
         val uniqueGenres = gamesList.map { it.category }.distinct().sorted()
         
@@ -168,12 +189,28 @@ class GamesListActivity : AppCompatActivity() {
             chip.text = genre
             chip.isCheckable = true
             chip.setChipBackgroundColorResource(R.color.chip_state_list)
-            chip.setTextColor(android.graphics.Color.WHITE)
+            chip.setTextColor(Color.WHITE)
             if (genre == selectedGenre) chip.isChecked = true
             chipGroup.addView(chip)
         }
 
-        slider.value = selectedMinRating
+        var tempRating = selectedMinRating
+        updateFilterStars(layoutStars, tempRating)
+
+        for (i in 0 until layoutStars.childCount) {
+            val star = layoutStars.getChildAt(i) as ImageView
+            star.setOnClickListener {
+                tempRating = i + 1
+                updateFilterStars(layoutStars, tempRating)
+            }
+        }
+
+        btnClear.setOnClickListener {
+            selectedGenre = "None"
+            selectedMinRating = 0
+            adapter.filterByCriteria(selectedGenre, 0.0f)
+            dialog.dismiss()
+        }
 
         btnApply.setOnClickListener {
             val selectedChipId = chipGroup.checkedChipId
@@ -182,12 +219,27 @@ class GamesListActivity : AppCompatActivity() {
             } else {
                 "None"
             }
-            selectedMinRating = slider.value
-            adapter.filterByCriteria(selectedGenre, selectedMinRating)
+            selectedMinRating = tempRating
+            adapter.filterByCriteria(selectedGenre, selectedMinRating.toFloat())
             dialog.dismiss()
         }
 
         dialog.setContentView(view)
         dialog.show()
+    }
+
+    private fun updateFilterStars(layoutStars: LinearLayout, rating: Int) {
+        val yellowColor = Color.parseColor("#FFD700")
+        val whiteColor = Color.WHITE
+        for (i in 0 until layoutStars.childCount) {
+            val star = layoutStars.getChildAt(i) as ImageView
+            if (i < rating) {
+                star.setImageResource(android.R.drawable.btn_star_big_on)
+                star.setColorFilter(yellowColor)
+            } else {
+                star.setImageResource(android.R.drawable.btn_star_big_off)
+                star.setColorFilter(whiteColor)
+            }
+        }
     }
 }

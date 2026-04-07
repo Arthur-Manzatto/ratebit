@@ -54,6 +54,11 @@ class ProfileActivity : AppCompatActivity() {
                         loadFavorites(user.email)
                     }
                 }
+            },
+            onGameClick = { game ->
+                val intent = Intent(this, GamePageActivity::class.java)
+                intent.putExtra("GAME_ID", game.id)
+                startActivity(intent)
             }
         )
 
@@ -76,10 +81,25 @@ class ProfileActivity : AppCompatActivity() {
                 user?.let {
                     nameView.text = it.name
                     emailView.text = it.email
+                    
+                    imgView.clearColorFilter()
+                    
                     if (it.urlPfp.isNotEmpty()) {
-                        Glide.with(this).load(it.urlPfp).placeholder(R.drawable.ic_launcher_background).into(imgView)
+                        // Real photo: fill the circle
+                        imgView.setPadding(0, 0, 0, 0)
+                        imgView.scaleType = ImageView.ScaleType.CENTER_CROP
+                        Glide.with(this)
+                            .load(it.urlPfp)
+                            .circleCrop()
+                            .placeholder(R.drawable.ic_profile)
+                            .error(R.drawable.ic_profile)
+                            .into(imgView)
                     } else {
-                        imgView.setImageResource(R.drawable.ic_launcher_background)
+                        // Default icon: add breathing room
+                        val padding = (24 * resources.displayMetrics.density).toInt() // 24dp
+                        imgView.setPadding(padding, padding, padding, padding)
+                        imgView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                        imgView.setImageResource(R.drawable.ic_profile)
                     }
                 }
             },
@@ -146,10 +166,10 @@ class ProfileActivity : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             val newName = editName.text.toString()
-            val newPfpUrl = editPfpUrl.setText(editPfpUrl.text.toString()).toString() // Fixing a small logic error in previous thoughts
+            val newPfpUrl = editPfpUrl.text.toString()
 
             currentUser?.let { user ->
-                val updatedUser = user.copy(name = newName, urlPfp = editPfpUrl.text.toString())
+                val updatedUser = user.copy(name = newName, urlPfp = newPfpUrl)
                 userRepository.updateUser(updatedUser,
                     onSuccess = {
                         Toast.makeText(this, getString(R.string.profile_updated), Toast.LENGTH_SHORT).show()

@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ratebit" >
         <activity
+            android:name=".ui.GamePageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ProfileActivity"
             android:exported="false" />
         <activity

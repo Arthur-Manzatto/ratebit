@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ratebit.R
 import com.example.ratebit.model.Game
+import java.util.Locale
 
 class GamesAdapter(
     private var originalList: List<Game>,
     private var favoriteIds: List<Int> = listOf(),
-    private val onFavoriteClick: (Game, Boolean) -> Unit
+    private val onFavoriteClick: (Game, Boolean) -> Unit,
+    private val onGameClick: (Game) -> Unit
 ) : RecyclerView.Adapter<GamesAdapter.GameViewHolder>() {
 
     private var filteredList = originalList.toList()
@@ -36,7 +38,9 @@ class GamesAdapter(
         val game = filteredList[position]
         holder.name.text = game.name
         holder.genre.text = game.category
-        holder.rating.text = game.averageRating.toString()
+        
+        // Formata a nota com 1 dígito após a vírgula
+        holder.rating.text = String.format(Locale.US, "%.1f", game.averageRating)
 
         // Check if game is favorite
         val isFavorite = favoriteIds.contains(game.id)
@@ -50,6 +54,10 @@ class GamesAdapter(
 
         holder.btnFavorite.setOnClickListener {
             onFavoriteClick(game, !isFavorite)
+        }
+
+        holder.itemView.setOnClickListener {
+            onGameClick(game)
         }
 
         // Load image with Glide
