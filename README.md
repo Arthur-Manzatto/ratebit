@@ -85,9 +85,18 @@ Contributions are welcome! Feel free to open an **Issue** or submit a **Pull Req
 
 ---
 
+## 👥 Contributors
+
+Developed with ❤️ by:
+
+| [<img src="https://github.com/Arthur-Manzatto.png" width="50px;"/><br /><sub><b>Arthur Manzatto</b></sub>](https://github.com/Arthur-Manzatto) | [<img src="https://github.com/EduardoScudeler07.png" width="50px;"/><br /><sub><b>Eduardo Scudeler</b></sub>](https://github.com/EduardoScudeler07) | [<img src="https://github.com/0utLunar.png" width="50px;"/><br /><sub><b>Lucas Cirino</b></sub>](https://github.com/0utLunar) |
+| :---: | :---: | :---: |
+
+---
+
 ## 📄 License
 
 This project is under the MIT License.
 
 ---
-⭐ **Developed with ❤️ by the Ratebit community.**
+⭐ **Ratebit Community**
