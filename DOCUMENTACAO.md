@@ -190,6 +190,18 @@ cd ratebit
 
 ---
 
+## Download
+
+### Versão Disponível
+
+| Versão | Data | APK |
+|--------|------|-----|
+| v1.0.0 | 08/04/2026 | [Download](https://github.com/Arthur-Manzatto/ratebit/releases/tag/v1.0.0) |
+
+Consulte a seção [Visão Geral](#visão-geral) para os requisitos do sistema.
+
+---
+
 ## Guia de Uso
 
 ### Primeiro Acesso
