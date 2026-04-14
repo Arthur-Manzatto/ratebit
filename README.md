@@ -15,30 +15,31 @@
 *   **Game Feed:** Real-time game list with search by name.
 *   **Smart Filters:** Filter by category and minimum rating using a 5-star system.
 *   **Game Page:** Complete details including developer, release date, and description.
-*   **Review System:**
-    *   Intuitive star rating (1 to 5).
-    *   Highlighted "Your Review" section at the top of the list.
-    *   Editing existing reviews.
-    *   Automatic calculation of the game's global average rating.
-*   **Favorites:** Save your preferred games with one click (synchronized across all screens).
-*   **Customizable Profile:** Change username and profile picture via URL.
+*   **Advanced Review System:**
+    *   Intuitive star selection (1 to 5 stars).
+    *   **"Your Review"** section: Your personal evaluation always appears at the top.
+    *   **Edit Mode:** Change your rating and comment at any time.
+    *   **Review Filtering:** Filter comments by rating to see what others think.
+    *   **Automatic Rating:** Real-time calculation of the game's global average.
+*   **Favorites:** Save games with one click, synchronized across List, Profile, and Game pages.
+*   **Customizable Profile:** Personalize your identity with a custom username and profile picture URL.
 
 ### 🛡️ For Administrators
-*   **Content Management:** Exclusive access to add new games to the platform.
+*   **Content Control:** Exclusive access to add new games to the platform via a restricted interface.
 
 ---
 
 ## 🚀 Technologies Used
 
 *   **Language:** [Kotlin](https://kotlinlang.org/)
-*   **Database:** [Firebase Firestore](https://firebase.google.com/docs/firestore) (Real-time updates)
-*   **Architecture:** Repository Pattern for data abstraction.
+*   **Database:** [Firebase Firestore](https://firebase.google.com/docs/firestore) (Real-time synchronization)
+*   **Architecture:** Repository Pattern for clean data management.
 *   **UI/UX:** 
-    *   Material Design 3
-    *   ConstraintLayout for complex layouts.
-    *   BottomSheetDialogs for filters and menus.
-    *   ShapeableImageView for circular avatars.
-*   **Image Loading:** [Glide](https://github.com/bumptech/glide) (with caching and error handling).
+    *   **Material Design 3** for a modern look.
+    *   **ConstraintLayout** for responsive designs.
+    *   **BottomSheetDialogs** for clean filters and settings.
+    *   **ShapeableImageView** for polished circular avatars.
+*   **Image Loading:** [Glide](https://github.com/bumptech/glide) with smart caching and error placeholders.
 
 ---
 
@@ -53,35 +54,23 @@
 3.  **Firebase Configuration:**
     *   Create a project in the [Firebase Console](https://console.firebase.google.com/).
     *   Add an Android app with the package `com.example.ratebit`.
-    *   Download the `google-services.json` file and place it in the `app/` folder.
-    *   Enable **Firestore Database** and create the collections: `users`, `games`, `reviews`.
+    *   Download `google-services.json` and place it in the `app/` folder.
+    *   Enable **Firestore Database** and create collections: `users`, `games`, `reviews`.
 4.  **Run:**
-    Select an emulator or physical device and click **Run**.
+    Select an emulator or device and click **Run**.
 
 ---
 
-## 📁 Main Folder Structure
+## 📁 Project Structure
 
 ```text
 com.example.ratebit
 ├── model/       # Data classes (Game, User, Rating)
-├── repository/  # Firebase communication logic
-├── ui/          # Activities and UI logic
-│   └── adapter/ # Adapters for RecyclerView (Games and Reviews)
-└── res/         # Resources (Layouts, Drawables, Themes)
+├── repository/  # Firebase & Data logic
+├── ui/          # Activities & View logic
+│   └── adapter/ # RecyclerView Adapters (Games & Reviews)
+└── res/         # Layouts, Drawables, Themes & Strings
 ```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open an **Issue** or submit a **Pull Request**.
-
-1.  Fork the project.
-2.  Create a Feature Branch (`git checkout -b feature/NewFeature`).
-3.  Commit your changes (`git commit -m 'Add: New Feature'`).
-4.  Push to the Branch (`git push origin feature/NewFeature`).
-5.  Open a Pull Request.
 
 ---
 
@@ -89,7 +78,7 @@ Contributions are welcome! Feel free to open an **Issue** or submit a **Pull Req
 
 Developed with ❤️ by:
 
-| [<img src="https://github.com/Arthur-Manzatto.png" width="50px;"/><br /><sub><b>Arthur Manzatto</b></sub>](https://github.com/Arthur-Manzatto) | [<img src="https://github.com/EduardoScudeler07.png" width="50px;"/><br /><sub><b>Eduardo Scudeler</b></sub>](https://github.com/EduardoScudeler07) | [<img src="https://github.com/0utLunar.png" width="50px;"/><br /><sub><b>Lucas Cirino</b></sub>](https://github.com/0utLunar) |
+| [<img src="https://github.com/Arthur-Manzatto.png" width="60"/><br /><sub><b>Arthur Manzatto</b></sub>](https://github.com/Arthur-Manzatto) | [<img src="https://github.com/EduardoScudeler07.png" width="60"/><br /><sub><b>Eduardo Scudeler</b></sub>](https://github.com/EduardoScudeler07) | [<img src="https://github.com/0utLunar.png" width="60"/><br /><sub><b>Lucas Cirino</b></sub>](https://github.com/0utLunar) |
 | :---: | :---: | :---: |
 
 ---
