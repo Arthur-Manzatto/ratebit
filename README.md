@@ -72,7 +72,7 @@ com.example.ratebit
 └── res/         # Layouts, Drawables, Themes & Strings
 ```
 
----
+
 
 ## 👥 Contributors
 
